@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -o3
 
-make:
+serial:
 	$(CC) $(CFLAGS) -o estimate_pi estimate_pi.c
 
 clean:
