@@ -8,13 +8,11 @@
 cd "$PBS_O_WORKDIR"
 export OMP_NUM_THREADS=24
 
+./estimate_pi 100
+./estimate_pi 1000
+./estimate_pi 10000
 ./estimate_pi 100000
-./estimate_pi 200000
-./estimate_pi 400000
-./estimate_pi 800000
-./estimate_pi 1600000
-./estimate_pi 3200000
-./estimate_pi 6400000
-./estimate_pi 12800000
-./estimate_pi 25600000
-./estimate_pi 51200000
+./estimate_pi 1000000
+./estimate_pi 10000000
+
+
