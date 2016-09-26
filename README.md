@@ -1,4 +1,4 @@
-Three quick demos are included in the repository. 
+Four quick demos are included in the repository. 
 
 The first, Hello World, is intended as a basic introduction to compiling and running programs. It includes a very simple Makefile as well. 
 
