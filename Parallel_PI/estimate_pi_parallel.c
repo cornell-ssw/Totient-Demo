@@ -6,15 +6,15 @@
 #include <omp.h>
 
 #define SEED 35791246
-#define NUM_THREADS 12 // change to use more / less. with OpenMP, there are many options
 
 int main(int argc, char **argv) {
     // number of iterations requested (no error checking)
     int niter = atoi(argv[1]);
+    int max_threads = omp_get_max_threads();
 
     // initialize the storage based on the number of threads
-    omp_set_num_threads(NUM_THREADS);
-    int *thread_sums = (int *)calloc(NUM_THREADS, sizeof(int));
+    omp_set_num_threads(max_threads);
+    int *thread_sums = (int *)calloc(max_threads, sizeof(int));
 
     // seed the RNG
     srand(SEED);
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 
     // final pass to calculate the overall sum
     int sum = 0;
-    for(int i = 0; i < NUM_THREADS; i++){
+    for(int i = 0; i < max_threads; i++){
         sum += thread_sums[i];
     }
 
