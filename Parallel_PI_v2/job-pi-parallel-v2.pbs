@@ -4,7 +4,7 @@
 # processor per node.  Note that the script calling this will
 # supply -l, which will override this setting (see batch_jobs.sh).
 
-#PBS -l nodes=1:ppn=1
+#PBS -l nodes=1:ppn=12
 #PBS -l walltime=0:05:00
 #PBS -N pi-parallel-v2
 #PBS -j oe
