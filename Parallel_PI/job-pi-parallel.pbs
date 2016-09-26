@@ -14,6 +14,6 @@
 cd "$PBS_O_WORKDIR"
 
 # Run the computations we want to.
-for niter in {100,200,400,800,1600,3200,6400,12800,25600,51200}; do
+for niter in {10000,20000,40000,80000,160000,320000,640000,1280000,2560000,5120000}; do
     ./estimate_pi_parallel "$niter"
 done
