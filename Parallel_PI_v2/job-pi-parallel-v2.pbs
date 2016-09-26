@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Since the default value of NUM_THREADS is 1, we will request 1
+# processor per node.  Note that the script calling this will
+# supply -l, which will override this setting (see batch_jobs.sh).
+
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=0:05:00
+#PBS -N pi-parallel-v2
+#PBS -j oe
+
+# This is a default value in bash.  We are scripting the launch of
+# the script with `qsub -l [resource] -v NUM_THREADS=<requested amount>`.
+# See the script batch_jobs.sh.
+P_NUM_THREADS=${NUM_THREADS:-1}
+
+# Since the default value of NUM_THREADS is 1, we will request 1
+# processor per node.  Note that the script calling this will
+# supply -l, which will override this setting.
+
+# Change directories to where this script (and our executable) is.
+cd "$PBS_O_WORKDIR"
+
+# Run the computations we want to.
+for niter in {100,200,400,800,1600,3200,6400,12800,25600,51200}; do
+    ./estimate_pi_parallel_v2 "$niter" "$P_NUM_THREADS"
+done
