@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 	double z;
 	double pi;
 	/* initialize random numbers */
-  	int carray[24];
+  	int carray[12];
 
 	#pragma omp parallel
   	{
@@ -26,14 +26,14 @@ int main(int argc, char* argv[])
 			y = (double)rand()/RAND_MAX;
 			z = x*x + y*y;
 			if (z<=1) count++;
-			}
+		}
 
 		carray[threadidx] = count;
 
 
 	}
 
-	for( i = 0; i < 24; i++){
+	for( i = 0; i < 12; i++){
 		sum += carray[i];
 	}
 
