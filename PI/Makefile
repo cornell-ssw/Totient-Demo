@@ -1,8 +1,12 @@
 CC = gcc
-CFLAGS = -o3
+CFLAGS = -O3 -std=c99
 
-serial:
+.PHONY: all clean
+
+all: pi
+
+pi: estimate_pi.c
 	$(CC) $(CFLAGS) -o estimate_pi estimate_pi.c
 
 clean:
-	rm estimate_pi pi*
+	rm -f estimate_pi pi.o*

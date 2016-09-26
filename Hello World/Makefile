@@ -1,5 +1,11 @@
-hello:
-	gcc -o hello hello.c
+CC = gcc
+
+.PHONY: all clean
+
+all: hello
+
+hello: hello.c
+	$(CC) -o hello hello.c
 
 clean:
-	rm hello *.txt
+	rm -f hello hello.txt

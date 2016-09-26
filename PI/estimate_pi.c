@@ -2,26 +2,25 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+
 #define SEED 35791246
 
-main(int argc, char* argv[])
-{
-   int niter = atoi(argv[1]);
-   double x,y;
-   int i,count=0; /* # of points in the 1st quadrant of unit circle */
-   double z;
-   double pi;
+int main(int argc, char **argv) {
+    // number of iterations requested (no error checking)
+    int niter = atoi(argv[1]);
 
+    // seed the RNG
+    srand(SEED);
 
-   /* initialize random numbers */
-   srand(SEED);
-   count=0;
-   for ( i=0; i<niter; i++) {
-      x = (double)rand()/RAND_MAX;
-      y = (double)rand()/RAND_MAX;
-      z = x*x+y*y;
-      if (z<=1) count++;
-      }
-   pi=(double)count/niter*4;
-   printf("# of trials= %d , estimate of pi is %g \n",niter,pi);
+    int count = 0;
+    for(int i = 0; i < niter; ++i) {
+        double x = (double) rand() / RAND_MAX;
+        double y = (double) rand() / RAND_MAX;
+        double z = x*x + y*y;
+        if (z<=1) ++count;
+    }
+
+    // the resultant estimate of pi
+    double pi = (double) count / niter*4;
+    printf("num trials=%d, estimate of pi=%g\n", niter, pi);
 }
